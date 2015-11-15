@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	div{width:200px;height:200px;background:red;position:absolute;top:0;left:0;}
+	</style>
+	<script src="move（加速 减速）运动.js"></script>
+	<script>
+		window.onload=function(){
+			var oDiv=document.body.children[0];
+			oDiv.onclick=function(){
+				startMove(oDiv,{left:500},'ease-in',700);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div></div>
+</body>
+</html>
