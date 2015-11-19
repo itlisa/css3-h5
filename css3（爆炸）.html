@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	div{margin:100px auto;width:700px;position:relative;top:0;left:0;height:400px;}
+	span{position:absolute;background:url(img/12.jpg); no-repeat; opacity:1;}
+	</style>
+	<script>
+	window.onload=function(){
+		var oBox=document.body.children[0];
+		var r=4;
+		var c=7;
+		for(var i=0;i<r;i++){
+			for(var j=0;j<c;j++){
+				var oS=document.createElement('span');
+				oS.style.width=oBox.offsetWidth/c+'px';
+				oS.style.height=oBox.offsetHeight/r+'px';
+				oBox.appendChild(oS);
+				oS.style.left=oS.offsetWidth*j+'px';
+				oS.style.top=oS.offsetHeight*i+'px';
+				oS.style.backgroundPosition=-oS.offsetWidth*j+'px -'+oS.offsetHeight*i+'px';
+				
+			}
+		};
+		var aS = oBox.getElementsByTagName('span');
+		oBox.onclick=function(){
+			for(var i=0;i<aS.length;i++){
+				var cX=aS[i].offsetLeft+aS[i].offsetWidth/2;
+				var cY=aS[i].offsetTop+aS[i].offsetHeight/2;
+				var disX=oBox.offsetWidth/2;
+				var disY=oBox.offsetHeight/2;
+				var x=(cX-disX)*Math.random();
+				var y=(cY-disY)*Math.random();
+				aS[i].style.WebkitTransform='perspective(800px) translateX('+x+'px) translateY('+y+'px) rotateX('+(Math.random()*360+180)+'deg) rotateY('+(Math.random()*360+180)+'deg)';
+				aS[i].style.opacity=0;
+				aS[i].style.WebkitTransition='1s all ease';
+			}
+		};
+	};
+	</script>
+</head>
+<body>
+	<div><img src="img/13.jpg" width="700" height="400"></div>
+</body>
+</html>

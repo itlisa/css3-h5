@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.box{width:200px;height:300px;position:relative;top:0;left:0;margin:100px auto;-webkit-transform:perspective(800px) rotateY(0deg);-webkit-transition:0.5s all ease;-webkit-transform-style:preserve-3d;}
+	.front{width:200px;height:300px;position:absolute;top:0;left:0;background: green;-webkit-transform:translateZ(1px);}
+	.back{width:200px;height:300px;position:absolute;top:0;left:0;background: pink;-webkit-transform:translateZ(-1px) scale(-1,1);}
+	.box:active{-webkit-transform:perspective(800px) rotateY(180deg);}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="front">正面</div>
+		<div class="back">背面</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.box{width:300px;height:300px;border:3px solid #000;border-radius: 50%;position:absolute;top:50%;left:50%;margin-top:-150px;margin-left:-150px;}
+	.h{width:8px;height:100px;background:#000;position:absolute;left:50%;margin-left:-4px;top:50%;margin-top:-100px;-webkit-transform-origin:center bottom;}
+	.m{width:4px;height:120px;background:#000;position:absolute;left:50%;margin-left:-2px;top:50%;margin-top:-120px;-webkit-transform-origin:center bottom;}
+	.s{width:2px;height:150px;background:#000;position:absolute;left:50%;margin-left:-1px;top:50%;margin-top:-150px;-webkit-transform-origin:center bottom;}
+	.cir{width:30px;height:30px;border-radius: 50%;position:absolute;left:50%;margin-left:-15px;top:50%;margin-top:-15px;background:#000;}
+	.box .scaler{width:2px;height:8px;background:#000;position:absolute;top:0;left:50%;margin-left:-1px;-webkit-transform-origin:center 150px;display:block;}
+	.box .bigscaler{width:4px;height:10px;background:#000;position:absolute;top:0;left:50%;margin-left:-2px;-webkit-transform-origin:center 150px;display:block;}
+	.box .bigscaler em{position:absolute; top:18px; font-style:normal; width:30px; left:50%; margin-left:-15px; text-align:center;}
+	</style>
+	<script>
+	window.onload=function(){
+		var oBox=document.querySelector('.box');
+		var oH=document.querySelector('.h');
+		var oM=document.querySelector('.m');
+		var oS=document.querySelector('.s');
+		for(var i=0;i<60;i++){
+			var oSp=document.createElement('span');
+			if(i%5==0){
+				oSp.className='bigscaler';
+				if(i==0){
+				oSp.innerHTML='<em>'+12+'</em>';
+				}else{
+					oSp.innerHTML='<em>'+i/5+'<\/em>';
+					var oEm=oSp.children[0];
+					oEm.style.WebkitTransform='rotate('+-i*6+'deg)';
+				}
+			}else{
+				oSp.className='scaler';
+			};
+			oSp.style.WebkitTransform='rotate('+i*6+'deg)';
+			oBox.appendChild(oSp);
+			alert(oSp.length);
+		};
+		kick();
+		function kick(){
+			setInterval(function(){
+				var oDate=new Date();
+				oH.style.WebkitTransform='rotate('+(oDate.getHours()+oDate.getMinutes()/60)*30+'deg)';
+				oM.style.WebkitTransform='rotate('+(oDate.getMinutes()+oDate.getSeconds()/60)*6+'deg)';
+				oS.style.WebkitTransform='rotate('+oDate.getSeconds()*6+'deg)';
+			},1000)
+		}
+	};
+	</script>
+</head>
+<body>
+	<div class="box">
+		<div class="h"></div>
+		<div class="m"></div>
+		<div class="s"></div>
+		<div class="cir"></div>
+	</div>
+</body>
+</html>

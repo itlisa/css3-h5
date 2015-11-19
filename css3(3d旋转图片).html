@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{margin:0;padding:0;}
+	.main{width:200px;height:300px;position:relative;top:0;left:0;margin:100px auto;background:#399;-webkit-transform:perspective(1200px) rotateX(-15deg) rotateY(0deg);-webkit-transform-style:preserve-3d;-webkit-transition:3s all ease;}
+	.main:active{-webkit-transform:perspective(800px) rotateX(15deg) rotateY(360deg);}
+	li{width:200px;height:300px;position:absolute;top:0;left:0;list-style:none;-webkit-transition:1s all ease;}
+	img{width:200px;height:300px;}
+	</style>
+	<script>
+	/*window.onload=function(){
+		var oM=document.querySelector('.main');
+		for(var i=0;i<11;i++){
+			var oL=document.createElement('li');
+			oL.style.position='url(img/'+i+'.jpg)';
+			oM.appendChild(oL)
+		};
+	};*/
+	window.onload=function(){
+		var oM=document.querySelector('.main');
+		var aL=oM.children;
+		var i=aL.length-1;
+		var timer=setInterval(function(){
+			aL[i].style.WebkitTransform='rotateY('+i*360/aL.length+'deg) translateZ(400px)';
+			i--;
+			if(i<0){
+				clearInterval(timer);
+			}
+		},100)
+	};
+	</script>
+</head>
+<body>
+	<ul class="main">
+		<li><img src="img/1.jpg" /></li>
+		<li><img src="img/2.jpg" /></li>
+		<li><img src="img/3.jpg" /></li>
+		<li><img src="img/4.jpg" /></li>
+		<li><img src="img/5.jpg" /></li>
+		<li><img src="img/6.jpg" /></li>
+		<li><img src="img/7.jpg" /></li>
+		<li><img src="img/8.jpg" /></li>
+		<li><img src="img/9.jpg" /></li>
+		<li><img src="img/10.jpg" /></li>
+		<li><img src="img/11.jpg" /></li>
+	</ul>
+</body>
+</html>

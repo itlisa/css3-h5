@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	div{font-size:30px;text-shadow:0 0 0 black;position:absolute;top:50%;left:50%;}
+	</style>
+	<script>
+	window.onload=function(){
+		var oBox=document.body.children[0];
+		document.onmousemove=function(ev){
+			var x1=ev.pageX;
+			var y1=ev.pageY;
+			var x2=oBox.offsetLeft+oBox.offsetWidth/2;
+			var y2=oBox.offsetTop+oBox.offsetHeight/2;
+			var disX=(x2-x1)/3;
+			var disY=(y2-y1)/3;
+			var dis=Math.sqrt(disX*disX+disY*disY)/20;
+			oBox.style.textShadow=disX+'px '+disY+'px '+dis+'px black';
+		};
+	};
+	</script>
+</head>
+<body>
+	<div>aaaaaaaaaaaaaaaaaaa</div>
+</body>
+</html>

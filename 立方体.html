@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.box{width:300px;height:300px;position:relative;top:0;left:0;-webkit-transform-style:preserve-3d;-webkit-transition:3s all ease;-webkit-transform:perspective(800px) rotateX(30deg) rotateY(30deg) ;margin:200px auto;-webkit-transform-origin:center center;}
+	.box div{position:absolute;top:0;left:0;}
+	.back{width:300px;height:300px;background:green;-webkit-transform: translateZ(-150px);opacity:0.5;}
+	.left{width:300px;height:300px;background:pink;-webkit-transform: translateX(-150px) rotateY(90deg);opacity:0.5;}
+	.right{width:300px;height:300px;background:blue;-webkit-transform: translateX(150px) rotateY(-90deg);opacity:0.5;}
+	.top{width:300px;height:300px;background:red;-webkit-transform: translateY(-150px) rotateX(90deg);opacity:0.5;}
+	.bottom{width:300px;height:300px;background:purple;-webkit-transform: translateY(150px) rotateX(-90deg);opacity:0.5;}
+	.front{width:300px;height:300px;background:orange;-webkit-transform: translateZ(150px);opacity:0.5;}
+	.box:active{-webkit-transform:perspective(800px) rotateX(360deg) rotateY(360deg);}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="top">1</div>
+		<div class="bottom">2</div>
+		<div class="left">3</div>
+		<div class="right">4</div>
+		<div class="front">5</div>
+		<div class="back">6</div>
+	</div>
+</body>
+</html>
