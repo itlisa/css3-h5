@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{padding:0;margin:0;}
+	#div2{
+		width:400px;height:300px;
+		border:1px solid #ccc;
+		text-align:center;
+		line-height:300px;
+		font-size:30px;
+		position:absolute;top:50%;left:50%;
+		margin-left:-200px;
+		margin-top:-150px;
+		display:none;
+	}
+	textarea{width:200px;height:200px;}
+	</style>
+	<script>
+	window.onload=function(){
+		var oBox=document.querySelector('#div2');
+		var oTxt=document.querySelector('textarea');
+		var oInfo=document.querySelector('#div1');
+		oBox.ondragover=function(){
+			return false;
+		};
+		oBox.ondrop=function(ev){
+			//alert(ev.dataTransfer.files.length);
+			var oFile=ev.dataTransfer.files[0];
+			oInfo.innerHTML=oFile.name+'-'+oFile.size+'-'+oFile.type
+			return false;
+			/*var reader=new FileReader();
+			reader.onload=function(){
+				oTxt.value=reader.result;
+			};
+			reader.readAsDataURL(oFile);*/
+		};
+		var time=null;
+		document.ondragover=function(){
+			oBox.style.display='block';
+			oBox.innerHTML='释放鼠标';
+			clearInterval(timer);
+			timer=setInterval(function(){
+				oBox.style.display='none';
+				oBox.innerHTML='请将文件拖至此处...';
+			},300)
+		}
+	};
+	</script>
+</head>
+<body>
+	<div id="div1">axxx.xxx-2333-image/jpg</div>
+	<div id="div2">请将文件拖至此处...</div>
+</body>
+</html>

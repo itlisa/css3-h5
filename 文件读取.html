@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	div{width:800px;height:500px;border:1px solid #ccc;text-align:center;line-height:500px;font-size:30px;position:absolute;top:50%;left:50%;margin-left:-400px;margin-top:-250px;display:none;}
+	</style>
+	<script>
+	window.onload=function(){
+		var oBox=document.querySelector('#box');
+		var timer=null;
+		document.ondragover=function(){
+			oBox.style.display='block';
+			oBox.ondragenter=function(){
+				oBox.innerHTML="释放鼠标";
+			};
+			clearInterval(timer);
+			timer=setInterval(function(){
+				oBox.style.display='none'
+				oBox.innerHTML="请将文件拖至此处...";
+			},300)
+		};
+	};
+	</script>
+</head>
+<body>
+	<div id="box">请将文件拖至此处...</div>
+</body>
+</html>

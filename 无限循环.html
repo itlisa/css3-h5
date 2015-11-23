@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	@-webkit-keyframes test{
+		from{-webkit-transform:translateX(0px);}
+		to{-webkit-transform:translateX(-500px);}
+	}
+	#box{
+		width:500px;
+		height:30px;
+		
+		margin:100px auto;
+		overflow:hidden;
+		border-radius:30px;
+	}
+	#bar{
+		width:1000px;
+		height:30px;
+		background:-webkit-repeating-linear-gradient(-30deg,red 0,red 10px ,green 10px ,green 20px);
+		/*-webkit-animation:3s test linear infinite;*/
+	}
+	div:hover{-webkit-animate-play-state:paused;}
+	</style>
+	<script>
+	window.onload=function(){
+		var oBar=document.querySelector('#bar');
+		var left=0;
+		setInterval(function(){
+			left-=2;
+			oBar.style.WebkitTransform='translateX('+left+'px)';
+			if(left<=-500){
+				left=0;
+			}
+		},30)
+	};
+	</script>
+
+</head>
+<body>
+	<div id="box">
+		<div id="bar"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{padding:0;margin:0;}
+	@-webkit-keyframes test{
+			from{width:100px;}
+			to{width:500px;}
+		}
+	div{
+		width:100px;
+		height:100px;
+		background:orange;
+		-webkit-animation-name:test;
+		-webkit-animation-duration:3s;
+		-webkit-animation-timing-function:ease-out;
+		-webkit-animation-direction:alternate;
+		/*-webkit-animation-fill-mode:forwards;*/
+		-webkit-animation-iteration-count:infinite;
+	}
+	div:hover{-webkit-animation-play-state:paused;}
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

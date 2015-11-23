@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#bar_box{width:500px;height:20px;background:#ccc;border-radius: 10px;position:relative;top:0;left:0;}
+	#bar{width:0;height:20px;background:green;border-radius: 10px;position:absolute;top:0;left:0;}
+	#bar_btn{width:20px;height:20px;background:orange;border-radius: 50%;position:absolute;top:0;left:0;z-index:2;}
+	</style>
+	<script>
+	function toDou(iNum){
+		return iNum<10?'0'+iNum:''+iNum;
+	};
+	function time2min(time){
+		var oMin=parseInt(time/60);
+		var oSec=parseInt(time%60);
+		return toDou(oMin)+':'+toDou(oSec)
+	};
+	window.onload=function(){
+		var oS=document.querySelector('#start');
+		var oP=document.querySelector('#pause');
+		var oSt=document.querySelector('#stop');
+		var oV=document.querySelector('video');
+		var oTxt=document.querySelector('span');
+		var oBar=document.querySelector('#bar');
+		var oMain=document.querySelector('#bar_box');
+		var oBtn=document.querySelector('#bar_btn');
+		oS.onclick=function(){
+			oV.play();
+		};
+		oP.onclick=function(){
+			oV.pause();
+		};
+		oSt.onclick=function(){
+			oV.pause();
+			oV.currentTime=0;
+		};
+		oV.ontimeupdate=function(){
+			oTxt.innerHTML=time2min(oV.currentTime)+'/'+time2min(oV.duration);
+			var scale=oV.currentTime/oV.duration;
+			oBar.style.width=scale*oMain.offsetWidth+'px';
+			oBtn.style.left=scale*(oMain.offsetWidth-oBtn.offsetWidth)+'px';
+		};
+		oBtn.onmousedown=function(ev){
+			var disX=ev.clientX-oBtn.offsetLeft;
+			oV.pause();
+			document.onmousemove=function(ev){
+				var l=ev.clientX-disX;
+				oBtn.style.left=l+'px';
+				var scale=l/(oMain.offsetWidth-oBtn.offsetWidth);
+				oBar.style.width=scale*oMain.offsetWidth+'px';
+				oV.currentTime=scale*oV.duration;
+				oV.play();
+			};
+			document.onmouseup=function(){
+				document.onmousemove=null;
+				document.onmouseup=null;
+			};
+			return false;
+		}
+	};
+	</script>
+</head>
+<body>
+	<input type="button" value="播放" id="start">
+	<input type="button" value="暂停" id="pause">
+	<input type="button" value="停止" id="stop">
+	<br/>
+	<span>00:00/00:00</span>
+	<div id="bar_box">
+		<div id='bar_btn'></div>
+		<div id="bar"></div>
+	</div>
+	<br/>
+	<video src="http://images.sohu.com/ytv/SH/Coke/64036020120714021103.mp4"></video>
+</body>
+</html>
