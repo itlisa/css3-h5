@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	
+	</style>
+	<script>
+	window.onload=function(){
+		var oC=document.getElementById('c1');
+		var gc=oC.getContext('2d');
+		gc.strokeStyle='#f90';//向两边扩散
+		gc.fillStyle='green'
+		gc.lineWidth=10;
+		gc.moveTo(206,40);
+		gc.lineTo(340,172);
+		gc.lineTo(206,306);
+		gc.closePath();
+		gc.stroke();
+		gc.fill();
+	}
+	</script>
+</head>
+<body>
+	<canvas id="c1" width='800' height='600'>
+		<span></span>
+	</canvas>
+</body>
+</html>

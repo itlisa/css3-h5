@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{padding:0;margin:0;}
+	body{background:#000;}
+	#c1{background: #fff;position:absolute;top:0;left:0;margin-top:-300px;margin-left:-400px;left:50%;top:50%;}
+	</style>
+	<script>
+	window.onload=function(){
+		var oC=document.getElementById('c1');
+		var gc=oC.getContext('2d');
+		gc.beginPath();
+		gc.strokeStyle='red';
+		gc.lineWidth='10px';
+		gc.moveTo(200,200);
+		gc.lineTo(200,400);
+		gc.stroke();
+		gc.closePath();
+
+		gc.beginPath();
+		gc.strokeStyle='green';
+		gc.moveTo(400,200);
+		gc.lineTo(400,400);
+		gc.stroke();
+		gc.closePath();
+	}
+	</script>
+</head>
+<body>
+	<canvas id="c1" width='800' height='600'>
+		<span></span>
+	</canvas>
+</body>
+</html>

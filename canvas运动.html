@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{padding:0;margin:0;}
+	body{background:#000;}
+	#c1{background: #fff;position:absolute;top:0;left:0;margin-top:-300px;margin-left:-400px;left:50%;top:50%;}
+	</style>
+	<script>
+	window.onload=function(){
+		var oC=document.getElementById('c1');
+		var gc=oC.getContext('2d');
+		var l=0;
+		setInterval(function(){
+			gc.clearRect(0,0,oC.width,oC.height)//canvas不怕影响性能
+			l++;
+			gc.strokeRect(l,100,400,300,300)
+		},16)
+	};
+	</script>
+</head>
+<body>
+	<canvas id="c1" width='800' height='600'>
+		<span>您的浏览器版本过低，请升级</span>
+	</canvas>
+</body>
+</html>

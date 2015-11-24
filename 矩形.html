@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{padding:0;margin:0;}
+	body{background:#000;}
+	#c1{background: #fff;position:absolute;top:0;left:0;margin-top:-300px;margin-left:-400px;left:50%;top:50%;}
+	</style>
+	<script>
+	function rnd(m,n){
+		return parseInt(n+Math.random()*(m-n));
+	}
+	window.onload=function(){
+		var oC=document.getElementById('c1');
+		var gc=oC.getContext('2d');
+		var arr=[120,432,245,345,421,245,276,144,212];
+		var iMax=Math.max.apply(null,arr);
+		var aHeight=[];
+		for(var i=0;i<arr.length;i++){
+			aHeight.push(arr[i]/iMax*oC.height*0.8);
+		};
+		var space=oC.width/(arr.length*4-1);
+		var w=space*3;
+		//var w=40;
+		//var space=20
+		for(var i=0;i<aHeight.length;i++){
+			gc.fillStyle='rgb('+rnd(0,256)+','+rnd(0,256)+','+rnd(0,256)+')';
+			gc.fillRect(i*w+i*space,oC.height-aHeight[i],w,aHeight[i])
+		};
+	};
+	</script>
+</head>
+<body>
+	<canvas id="c1" width='800' height='600'>
+		<span>对不起，你的浏览器不支持此类型工具</span>
+	</canvas>
+</body>
+</html>
