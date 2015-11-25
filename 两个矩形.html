@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body{background:#000;}
+	#c1{background:#fff;}
+	</style>
+	<script>
+	function d2a(n){
+		return n*Math.PI/180;
+	}
+	window.onload=function(){
+		var oC=document.getElementById('c1');
+		var gd=oC.getContext('2d');
+		gd.save(); //baocun
+		gd.beginPath();
+		gd.translate(250,200)
+		gd.rotate(d2a(30));
+
+		gd.fillStyle="red";
+		gd.fillRect(-150,-100,300,200);
+		//恢复位置
+
+		gd.translate(0,0)
+		gd.rotate(d2a(30))
+		gd.fillStyle="green";
+		gd.fillRect(-150,-100,300,200)
+		gd.restore();
+	}
+	</script>
+</head>
+<body>
+	<canvas id="c1" width='800' height="600"></canvas>
+</body>
+</html>

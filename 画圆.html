@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body{background:#000;}
+	#c1{background:#fff;}
+	</style>
+	<script>
+	function d2a(n){
+		return n*Math.PI/180;
+	}
+	window.onload=function(){
+		var oC=document.getElementById('c1');
+		var gc=oC.getContext('2d');
+		gc.lineWidth='5'
+		gc.arc(300,300,50,d2a(0),d2a(360),false)
+		gc.stroke();
+	};
+	</script>
+</head>
+<body>
+	<canvas id="c1" width="800" height="600"></canvas>
+</body>
+</html>

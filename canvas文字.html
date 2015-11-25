@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body{background:#000;}
+	#c1{background:#fff;}
+	</style>
+	<script>
+	window.onload=function(){
+		var oC=document.getElementById('c1');
+		var gc=oC.getContext('2d');
+		var str="智能社";
+		gc.fillStyle="blue";
+		gc.font='60px 黑体';
+		var w=gc.measureText(str).width;
+		gc.fillText(str,oC.width/2-w/2,w+20)
+
+	}
+	</script>
+</head>
+<body>
+	<canvas id="c1" width="800" height="600"></canvas>
+</body>
+</html>

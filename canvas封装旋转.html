@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body{background:#000;}
+	#c1{background:#fff;}
+	</style>
+	<script>
+	function d2a(n){
+		return n*Math.PI/180;
+	}
+	function myRect(gd,x,y,r,w,h,color){
+		gd.save();
+		gd.beginPath();
+		gd.translate(x+w/2,y+y/2)
+		
+		gd.rotate(r);
+		gd.fillRect(-(w/2),-(h/2),w,h)
+		gd.restore();
+		gd.fillStyle=color;
+	}
+	window.onload=function(){
+		var oC=document.getElementById('c1');
+		var gd=oC.getContext('2d');
+		var i=0;
+		var r1=0;
+		var r2=0;
+		setInterval(function(){
+			gd.clearRect(0,0,oC.width,oC.height)
+			r1+=3;
+			r2-=2;
+			myRect(gd,200,200,d2a(r1),300,200,'blue');
+			myRect(gd,200,200,d2a(r2),300,200,'orange');
+		},16)
+	};
+	</script>
+</head>
+<body>
+	<canvas id="c1" width='800' height="600"></canvas>
+</body>
+</html>

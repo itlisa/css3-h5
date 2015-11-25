@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body{background:#000;}
+	#c1{background:#fff;}
+	</style>
+	<script>
+	function d2a(n){
+		return n*Math.PI/180;
+	}
+	window.onload=function(){
+		var oC=document.getElementById('c1');
+		var gc=oC.getContext('2d');
+		gc.beginPath();
+		var i=0;
+		var timer=null;
+		timer=setInterval(function(){
+			gc.clearRect(0,0,oC.width,oC.height)
+			gc.lineWidth="5"
+			gc.strokeStyle='rgb('+255*(i/360)+',0,0)';
+			gc.arc(300,300,50,d2a(i),d2a(i+1),false);
+			i++
+			gc.stroke()
+			if(i>360){
+				clearInterval(timer)
+			}
+		},16)
+	};
+	</script>
+</head>
+<body>
+	<canvas id="c1" width="800" height="600"></canvas>
+</body>
+</html>
+var linear=gc.createLinearGradient(x1,y1,x2,y2)
+linear.addColorStop(0,'red')
+linear.addColorStop(1,'blue')
